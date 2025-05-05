@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/maBase')
+mongoose.connect('mongodb://127.0.0.1:27017/reservations')
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(err => console.error('Erreur MongoDB :', err));
 
