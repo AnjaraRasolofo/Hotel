@@ -7,7 +7,9 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://127.0.0.1:27017/reservations')
-    .then(() => console.log('Connexion à MongoDB réussie !'))
+    .then(() => 
+        console.log('Connexion à MongoDB réussie !')
+    )
     .catch(err => console.error('Erreur MongoDB :', err));
 
 
@@ -25,10 +27,16 @@ app.use((req, res, next) => {
 
   });
 
-const stuffRoutes = require('./routes/stuff');
-const userRoutes = require('./routes/user');
+const chambreRoutes = require('./routes/chambreRoute');
+const clientRoutes = require('./routes/clientRoute');
+const reservationRoutes = require('./routes/reservationRoute');
+const utilisateurRoutes = require('./routes/utilisateurRoute');
+const indisponibiliteRoutes = require('./routes/indisponibiliteRoute');
 
-app.use('/api/stuff', stuffRoutes);
-app.use('/api/auth', userRoutes);
+app.use('/api/chambre', chambreRoutes);
+app.use('/api/client', clientRoutes);
+app.use('/api/reservation', reservationRoutes);
+app.use('/api/auth', utilisateurRoutes);
+app.use('/api/indisponibilite', indisponibiliteRoutes);
 
 module.exports = app;

@@ -6,7 +6,7 @@ const reservationSchema = new mongoose.Schema({
   chambreId: { type: mongoose.Schema.Types.ObjectId, ref: 'Chambre', required: true },
   dateDebut: Date,
   dateFin: Date,
-  status: String,
+  //status: String,
   montant: Number
 });
 

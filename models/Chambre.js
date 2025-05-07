@@ -6,8 +6,10 @@ const chambreSchema = new mongoose.Schema({
   description: String,
   prix_par_nuit: Number,
   capacite: Number,
-  photo: String
-  /*availableDates: [Date],*/
+  photo: String,
+  type: String, // Suite, Standard, Familiale, 
+  disponible: {type: Boolean, default: true},
+  equipements: [String]
 });
 
 module.exports = mongoose.model('Chambre', chambreSchema);

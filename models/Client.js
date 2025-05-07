@@ -1,4 +1,3 @@
-// models/Client.js
 const mongoose = require('mongoose');
 
 const clientSchema = new mongoose.Schema({
@@ -6,7 +5,8 @@ const clientSchema = new mongoose.Schema({
   prenom: { type: String, required: true },
   email: { type: String, required: true },
   cin: { type: String, required: true, unique: true },
-  telephone: String
+  telephone: String,
+  adresse: String,
 });
 
 module.exports = mongoose.model('Client', clientSchema);

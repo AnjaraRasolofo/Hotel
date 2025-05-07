@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const auth = require('../middleware/auth');
+const auth = require('../middlewares/auth');
 
 const indisponibiliteController = require('../controllers/IndisponibiliteController');
 
@@ -13,6 +13,6 @@ router.put('/:id', auth, indisponibiliteController.modifyIndisponibilite);
 
 router.delete('/:id', auth, indisponibiliteController.deleteIndisponibilite);
 
-router.get('/', auth, indisponibiliteController.getAllIndisponibilite);
+router.get('/', auth, indisponibiliteController.getAllIndisponibilites);
 
 module.exports = router;
