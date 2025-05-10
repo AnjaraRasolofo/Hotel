@@ -18,6 +18,9 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
+.wrapper {
+  margin-left: 25px;
+}
 header {
   line-height: 1.5;
   max-height: 100vh;
