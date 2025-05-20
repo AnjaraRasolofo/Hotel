@@ -7,7 +7,9 @@ const clientController = require('../controllers/ClientController');
 
 router.post('/',  clientController.createClient);
 
-router.get('/:id', auth, clientController.getOneClient);
+router.get('/:name', clientController.searchClientByName);
+
+router.get('/:id', clientController.getOneClient);
 
 router.put('/:id', auth, clientController.modifyClient);
 

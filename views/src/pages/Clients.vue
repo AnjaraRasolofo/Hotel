@@ -1,7 +1,9 @@
 <template>
     <h1>Nos Clients</h1>
     <router-link to="/client">Nouveau client</router-link>
-    <hr>
+    <label for="">Rechercher un Client: </label>
+    <input type="text" v-model="name" @input="searchClient" placeholder="Rechercher..." class="search-box" />
+    <hr> 
     <div class="container">
         <table>
             <tr>
@@ -31,18 +33,32 @@
 
     const clients = ref([])
     const id = ref()
+    const name = ref('')
 
-    onMounted(async () => {
+    onMounted(() => {
+        fetchAllClient();
+    })
+
+    const fetchAllClient = async () => {
         try {
-            
             const response = await axios.get('http://localhost:3000/api/client')
+            clients.value = response.data
+        } catch (error) {
+            console.error('Erreur chargement total clients :', error)
+        }
+    }
+
+    const searchClient = async() => {
+        
+        try {
+            const response = await axios.get(`http://localhost:3000/api/client/${name.value}`)
             clients.value = response.data
 
         }
         catch(error) {
             console.error('Erreur lors du chargement des clients :', error)
         }
-    })
+    } 
 
     const deleteClient = async (idx) => {
     if (confirm("Voulez-vous vraiment supprimer ce client ?")) {
@@ -62,6 +78,12 @@
 
     .container {
         background-color: none;
+    }
+
+    .search-box {
+        padding: 6px;
+        margin-bottom: 10px;
+        width: 200px;
     }
 
 </style>

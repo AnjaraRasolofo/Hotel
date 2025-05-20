@@ -1,5 +1,7 @@
 <template>
+  
   <div v-if="chambre">
+    
     <h1>{{ chambre.nom }}</h1>
     <p>Prix : {{ chambre.prix_par_nuit }}€</p>
 
@@ -11,9 +13,11 @@
 
     <ReservationForm :chambre="chambre" :client="client"/>
   </div>
+
   <div v-else>
     <p>Chargement...</p>
   </div>
+
 </template>
 
 <script setup>
@@ -37,19 +41,22 @@ onMounted(async () => {
 </script>
 
 <style>
-.equipements {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  list-style: none;
-  padding: 0;
-  margin: 10px 0;
-}
-.badge {
-  background-color: #007bff;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 12px;
-  font-size: 0.9rem;
-}
+  
+  .equipements {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+
+  .badge {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+  }
+  
 </style>

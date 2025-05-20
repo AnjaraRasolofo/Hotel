@@ -65,8 +65,34 @@ exports.getOneClient = (req, res, next) => {
   );
 }
 
+exports.searchClientByName = async (req, res, next) => {
+  
+  const search = req.params.name || '';
+  
+  try {
+    let clients;
+
+    if (!search) {
+      // Aucun mot-clé -> renvoyer tous les clients
+      clients = await Client.find();
+    } else {
+      // Recherche sur nom ou prénom
+      clients = await Client.find({
+        $or: [
+          { nom: { $regex: search, $options: 'i' } },
+          { prenom: { $regex: search, $options: 'i' } }
+        ]
+      });
+    }
+    
+    res.status(200).json(clients);
+
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur serveur', error });
+  }
+}
+
 exports.deleteClient = (req, res, next) => {
-   console.log(req.params.id);
     Client.deleteOne({_id: req.params.id}).then(
     () => {
       res.status(200).json({
@@ -83,7 +109,7 @@ exports.deleteClient = (req, res, next) => {
 }
 
 exports.getAllClients = (req, res, next) => {
-    Client.find().then(
+  Client.find().then(
     (clients) => {
       res.status(200).json(clients);
     }
