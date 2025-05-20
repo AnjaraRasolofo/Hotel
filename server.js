@@ -12,6 +12,7 @@ const normalizePort = val => {
   }
   return false;
 };
+
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
@@ -19,8 +20,10 @@ const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;
   }
+  
   const address = server.address();
   const bind = typeof address === 'string' ? 'pipe ' + address : 'port: ' + port;
+  
   switch (error.code) {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges.');
@@ -33,6 +36,7 @@ const errorHandler = error => {
     default:
       throw error;
   }
+  
 };
 
 const server = http.createServer(app);

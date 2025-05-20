@@ -1,17 +1,19 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+  import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
-    <h1><RouterLink to="/">RANDRANA HOTEL</RouterLink></h1>
+  <header class="py-3 text-center">
+  <h1 class="mb-0">
+    <RouterLink to="/" class="text-decoration-none text-dark">RANDRANA HOTEL</RouterLink>
+  </h1>
 
-    <div class="wrapper">
+    <!--div class="wrapper">
       <nav>
         <RouterLink to="/clients">Clients</RouterLink>
         <RouterLink to="/chambres">Chambres</RouterLink>
       </nav>
-    </div>
+    </div>-->
   </header>
 
   <RouterView />
@@ -25,6 +27,12 @@ header {
   line-height: 1.5;
   max-height: 100vh;
   background-color: mediumseagreen;
+}
+
+header h1 {
+  margin: 0 auto;
+  text-align: center;
+  color: white; /* facultatif */
 }
 
 .logo {

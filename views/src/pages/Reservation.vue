@@ -6,7 +6,7 @@
         <input type="date" v-model="checkIn" required />
         <label>Date de départ :</label>
         <input type="date" v-model="checkOut" required />
-        <button type="submit">Réserver</button>
+        <button type="submit" class="btn btn-outline-primary btn-sm">Réserver</button>
       </form>
       <p v-if="message">{{ message }}</p>
     </div>

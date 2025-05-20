@@ -28,7 +28,7 @@ import {ref, onMounted} from 'vue'
             console.log(chambres.value)
         }
         catch(error) {
-            console.error('Erreur lors du chargement des clients :', error)
+            console.error('Erreur lors du chargement des chambres :', error)
         }
     })
 

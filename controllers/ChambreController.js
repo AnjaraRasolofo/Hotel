@@ -95,3 +95,10 @@ exports.getAllChambres = (req, res, next) => {
     }
   );
 }
+
+exports.uploadImage = (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: 'Aucun fichier envoyé' });
+  }
+  res.status(200).json({ path: `/uploads/${req.file.filename}` });
+};
