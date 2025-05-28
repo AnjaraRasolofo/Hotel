@@ -1,19 +1,12 @@
-FROM node:12.4
+FROM node:20
 
-# Crée le dossier de travail dans le conteneur
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Copie les fichiers de dépendances
 COPY package*.json ./
+RUN npm install --legacy-peer-deps
 
-# Installe les dépendances
-RUN npm install
-
-# Copie tout le reste de l'application
 COPY . .
 
-# Expose le port 8080
-EXPOSE 8080
-
-# Commande à exécuter au démarrage du conteneur 
+EXPOSE 3000
 CMD ["npm", "start"]
+

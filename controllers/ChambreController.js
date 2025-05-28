@@ -96,6 +96,29 @@ exports.getAllChambres = (req, res, next) => {
   );
 }
 
+exports.searchChambres = async (req, res, next) => {
+  const { from, to, type } = req.query;
+
+  const startDate = new Date(from);
+  const endDate = new Date(to);
+
+  // Recherche des chambres du bon type
+  let query = { type };
+
+  const rooms = await Chambre.find(query);
+
+  // Filtrage des chambres disponibles pour les dates demandées
+  const availableRooms = rooms.filter((room) => {
+    return room.reservations.every((r) => {
+      return (
+        new Date(r.to) <= startDate || new Date(r.from) >= endDate
+      );
+    });
+  });
+
+  res.json(availableRooms);
+}
+
 exports.uploadImage = (req, res) => {
   if (!req.file) {
     return res.status(400).json({ message: 'Aucun fichier envoyé' });

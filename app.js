@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+//require('dotenv').config();
 
 const app = express();
 app.use(express.json());
@@ -30,13 +31,13 @@ app.use((req, res, next) => {
 const chambreRoutes = require('./routes/chambreRoute');
 const clientRoutes = require('./routes/clientRoute');
 const reservationRoutes = require('./routes/reservationRoute');
-const utilisateurRoutes = require('./routes/utilisateurRoute');
+const authRoutes = require('./routes/authRoute');
 const indisponibiliteRoutes = require('./routes/indisponibiliteRoute');
 
 app.use('/api/chambre', chambreRoutes);
 app.use('/api/client', clientRoutes);
 app.use('/api/reservation', reservationRoutes);
-app.use('/api/auth', utilisateurRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/indisponibilite', indisponibiliteRoutes);
 
 module.exports = app;

@@ -1,5 +1,22 @@
 <script setup>
   import { RouterLink, RouterView } from 'vue-router'
+  import Login from './pages/login.vue'
+  import Home from './pages/Home.vue'
+
+  const requireAuth = (to, from, next) => {
+  
+  const token = localStorage.getItem('token');
+    if (!token) { 
+    } else {
+      next();
+    }
+  };  
+
+  const routes = [
+    { path: '/login', component: Login },
+    //{ path: '/', component: Home, beforeEnter: requireAuth },
+  ];
+
 </script>
 
 <template>
